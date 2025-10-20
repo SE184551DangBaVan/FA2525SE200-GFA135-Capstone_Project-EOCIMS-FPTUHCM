@@ -1,0 +1,67 @@
+.glow-btn {
+  position: relative;
+  overflow: hidden;
+  border: none;
+  border-radius: 50px;
+  padding: 12px 40px;
+  font-weight: bold;
+  text-transform: uppercase;
+  background: #808080;
+  color: #FFFF;
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s;
+  z-index: 1;
+}
+
+.glow-btn::before {
+  content: "";
+  position: absolute;
+  left: var(--x, 50%);
+  top: var(--y, 50%);
+  width: 200px;
+  height: 200px;
+  transform: translate(-50%, -50%);
+  background: radial-gradient(
+    circle,
+    #75FBC0 0%,
+    #75d5fb 30%,
+    rgba(210, 106, 58, 0.0) 70%
+  );
+  pointer-events: none;
+  border-radius: 50%;
+  opacity: 1;
+  transition: all 0.3s ease;
+  z-index: -1;
+  -webkit-animation: move 10s infinite alternate;
+          animation: move 10s infinite alternate;
+}
+
+.glow-btn:hover::before {
+  opacity: 1;
+  left: var(--x, 50%);
+  top: var(--y, 50%);
+  transform: translate(-50%, -50%);
+  transition: all 0.3s ease;
+  -webkit-animation: none;
+          animation: none;
+}
+
+@-webkit-keyframes move {
+  from {
+    transform: translate(-100px, -50px);
+  }
+
+  to {
+    transform: translate(-250px, -200px);
+  }
+}
+
+@keyframes move {
+  from {
+    transform: translate(-100px, -50px);
+  }
+
+  to {
+    transform: translate(-250px, -200px);
+  }
+}

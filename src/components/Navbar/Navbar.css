@@ -1,0 +1,157 @@
+/* Navbar */
+.header {
+  width: 100%;
+  margin-top: 10px;
+  background: transparent;
+  position: absolute;
+  top: 0;
+  z-index: 100;
+}
+
+.navbar {
+  height: 60px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 0 18px;
+  padding: 20px 30px 0 0;
+  border-radius: 12px;
+  border-top: 1.6px solid #303030;
+  transition: border 0.5s ease;
+}
+.navbar::before {
+  position: absolute;
+  inset: 0;
+  margin: 0 16px;
+  content: "";
+  border-radius: 24px;
+  border-left: 1.6px solid #303030;
+  border-right: 1.6px solid #303030;
+  height: 120px;
+  mask-image: radial-gradient(
+                ellipse 80% 130px at center, black 60%, transparent 70%
+              );
+  pointer-events: none;
+  transition: border 0.5s ease;
+}
+
+.navbar .nav-container {
+  position: fixed;
+  width: 96%;
+  height: 60px;
+  background-color: rgba(255, 255, 255, 0.5);
+  backdrop-filter: blur(5px);
+  border-radius: 24px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 5px;
+  padding-right: 20px;
+  left: 30px;
+  z-index: 9999;
+}
+
+.nav-container .btn-primary {
+  border: 1px solid #303030;
+  color: #303030;
+  background-color: #75FBC0;
+}
+.nav-container .btn-primary:hover {
+  color: #fff;
+  border: 1px solid transparent;
+  background-color: #303030;
+}
+
+.nav-links {
+  width: 500px;
+  display: flex;
+  justify-content: space-evenly;
+  gap: 2rem;
+  list-style: none;
+}
+
+.nav-links a {
+  text-decoration: none;
+  color: #303030;
+  font-weight: 500;
+  text-shadow: 0 0 0 transparent;
+  transition: color 0.2s ease, text-shadow 0.4s ease;
+}
+
+.nav-links a:hover {
+  text-shadow: 3px 3px 0 var(--color-secondary),
+    6px 6px 0 var(--color-tertiary);
+  font-family: bungee, sans-serif;
+  font-weight: 400;
+  text-align: center;
+  margin: 0;
+  color: var(--color-primary);
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  font-weight: 700;
+  font-size: 1.4rem;
+  text-shadow: rgba(25, 25, 25, 0.9) 0px 0px 2px;
+}
+
+.logo .logoInitials {
+  color: #303030;
+  -webkit-text-stroke: 0px transparent;
+}
+.logo span:nth-child(2) {
+  -webkit-text-stroke: 1px #0066B2;
+}
+.logo span:nth-child(3) {
+  -webkit-text-stroke: 1px #F26F21;
+}
+.logo span:nth-child(4) {
+  -webkit-text-stroke: 1px #0db04b;
+}
+
+body:has(#side-bar) .navbar {
+  border-top: 1.6px solid #303030;
+  animation: transform-border-vertical 0.4s forwards ease-out;
+}
+body:has(#side-bar) .navbar::before {
+  border-left: 1.6px solid #303030;
+  border-right: 1.6px solid #303030;
+  animation: transform-border-side 0.4s forwards ease-out;
+}
+body:has(#side-bar) .navbar .nav-container {
+  animation: transform-indent 0.6s forwards ease-out;
+  animation-delay: 2s;
+  border: 1px solid #ffffff00;
+  box-shadow: rgba(204, 219, 232, 0) 0px 0px 6px 0px inset, rgba(131, 138, 141, 0) 0px 0px 6px 1px inset;
+}
+
+body:has(#side-bar) .nav-container .btn-primary {
+  mask-image: url('../../assets/black-spray-paint-texture-matte-erase.gif');
+  mask-position: center;
+  mask-size: cover;
+  pointer-events: none;
+}
+
+@keyframes transform-indent {
+  to {
+    border: 1px solid #daf7ff;
+    box-shadow: rgb(204, 219, 232) 6px 6px 6px 0px inset, rgba(131, 138, 141, 0.21) -3px -3px 6px 1px inset;
+  }
+}
+
+@keyframes transform-border-side {
+  to {
+    border-left: 1.6px solid #00000000;
+    border-right: 1.6px solid #00000000;
+    margin: 0;
+  }
+}
+
+@keyframes transform-border-vertical {
+  to {
+    border-top: 1.6px solid #00000000;
+    margin-top: -10px;
+    padding-top: 40px;
+  }
+}
