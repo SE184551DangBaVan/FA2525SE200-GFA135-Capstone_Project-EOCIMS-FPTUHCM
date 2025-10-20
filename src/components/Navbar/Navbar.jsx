@@ -15,7 +15,7 @@ export default function Navbar() {
                   <li><a href="">Demo</a></li>
                   <li><a href="">About</a></li>
               </ul>
-              <button className="btn-primary" onClick={() => navigate('/home')}>Get Started</button>
+              <button className="btn-primary" onClick={() => navigate('/admin/home')}>Get Started</button>
             </div>
         </nav>
     </header>

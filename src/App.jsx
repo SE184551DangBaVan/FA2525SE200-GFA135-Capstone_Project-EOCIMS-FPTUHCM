@@ -3,7 +3,7 @@ import Navbar from './components/Navbar/Navbar'
 import SideBar from './components/SideBar/SideBar';
 import Hero from './pages/Users/HomePage/Hero/Hero'
 import { Routes, Route } from "react-router-dom";
-import MainPage from './pages/Users/HomePage/MainPage/MainPage';
+import MainPage from './pages/Admin/HomePage/MainPage/MainPage';
 
 function App() {
   return (
@@ -20,7 +20,7 @@ function App() {
         />
 
         <Route
-          path="/home"
+          path="/admin/home"
           element={
             <>
             <Navbar />
