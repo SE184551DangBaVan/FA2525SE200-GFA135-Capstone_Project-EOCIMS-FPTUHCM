@@ -1,15 +1,34 @@
 import { ArticleOutlined, BallotOutlined, ChairAltOutlined, DvrOutlined, Groups2, Groups2Outlined, KeyboardArrowUp, RecentActorsOutlined, School, SubjectOutlined } from '@mui/icons-material'
 import './SideBar.css'
-import { useEffect, useRef, useState } from "react"
+import ScissorLift from '../../components/ExtensionJoint/ScissorLift'
+import { useEffect, useState } from "react"
 
 export default function SideBar() {
   const [sideBarSelected, setSideBarSelected] = useState("staff");
+  const [retract, setRetract] = useState(1);
+  const [sideBarRetractor, setSideBarRetractor] = useState(true);
+
+  useEffect(() => {
+    setRetract(0);
+    const timer = setTimeout(() => {
+      setRetract(1);
+    }, 400);
+
+    return () => clearTimeout(timer);
+  }, [sideBarRetractor]);
+  
   return (
     <>
-      <div id="side-bar-outer" />
+      <div className='extended-joint-container'>
+        <ScissorLift toggled={retract}/>
+      </div>
+      <div className='extended-joint-container2'>
+        <ScissorLift toggled={retract}/>
+      </div>
+      <div id="side-bar-outer" className={ sideBarRetractor ? 'retract-animation' : 'rebound-animation'}/>
       <div id="side-bar-inner-mask" />
-      <div id="side-bar">
-        <input id="side-bar-toggle" type="checkbox"/>
+      <div id="side-bar" className={ sideBarRetractor ? 'retract-animation' : 'rebound-animation'}>
+        <input id="side-bar-toggle" type="checkbox" onClick={() => setSideBarRetractor(!sideBarRetractor)} />
         <div id="side-bar-header">
           <label htmlFor="side-bar-toggle"><span id="side-bar-toggle-burger"></span></label>
           <hr/>

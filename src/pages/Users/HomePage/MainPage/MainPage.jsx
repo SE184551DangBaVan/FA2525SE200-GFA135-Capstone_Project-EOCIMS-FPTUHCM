@@ -7,9 +7,6 @@ export default function MainPage() {
   const [selectedContent, setSelectedContent] = useState("staff");
   return (
     <div className='main-home-page'>
-      {/* <div className='extended-joint-container'>
-        <ScissorLift />
-      </div> */}
       <SideBar />
       <div className='main-home-page-content-container'>
         

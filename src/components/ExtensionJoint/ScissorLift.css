@@ -1,49 +1,26 @@
 .scissor-wrap {
-  --bar-width: 10px;        /* thickness of each bar */
-  --bar-length: 80px;     /* visual length of each arm */
-  --gap-min: 18px;         /* min vertical gap between pivots at t=0 */
-  --gap-max: 200px;        /* max vertical gap when t=1 */
-  --t: 0;                  /* controlled by component inline style */
-  --speed: 0.5s;
-  width: 200px;
+  --bar-width: 10px;
+  --bar-length: 80px;
+  --gap-min: 100px;
+  --gap-max: 280px;
+  --t: 0;
+  --speed: 0.3s;
+  width: 100px;
   margin: 10px auto;
   font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue",
     Arial;
   color: #222;
+  pointer-events: none;
 }
 
-/* controls */
-.controls {
-  display:flex;
-  gap: 12px;
-  justify-content:center;
-  margin-bottom:12px;
-}
-.controls button {
-  padding: 8px 12px;
-  border-radius: 8px;
-  border: 1px solid rgba(0,0,0,0.1);
-  background: linear-gradient(#fff,#f1f1f1);
-  cursor: pointer;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.08);
-}
-.controls button.active {
-  background: linear-gradient(#fdecea,#ffd6d6);
-  border-color: #e55;
-}
-
-/* stage */
 .scissor-stage {
   position: relative;
   width: 100%;
   height: calc( (var(--gap-max) - var(--gap-min)) * var(--t) + var(--gap-min) + 120px );
-  min-height: 200px;
-  background: gray;
+  min-height: 400px;
+  background: transparent;
   border-radius: 12px;
-  border: 1px solid rgba(0,0,0,0.05);
-  padding: 24px;
   box-sizing: border-box;
-  overflow: hidden;
 }
 
 /* scissor group positioning */
@@ -77,7 +54,7 @@
 
 /* bar styling */
 .bar {
-  --angle: calc( (1 - var(--t)) * 4deg + var(--t) * 40deg ); /* angle interpolation */
+  --angle: calc( (1 - var(--t)) * 12deg + var(--t) * 40deg ); /* angle interpolation */
   position: absolute;
   width: var(--bar-length);
   height: var(--bar-width);
@@ -91,14 +68,14 @@
 
 /* left bar slopes down-right, rotate positive */
 .bar.left {
-  transform: rotate(calc(var(--angle) * 1)) translateY(-15px) translateX(0);
+  transform: rotate(calc(var(--angle) * 1)) translateY(-15px) translateX(-5px);
   transform-origin: 20% 50%;
   /* slight offset to create pivot spacing */
 }
 
 /* right bar slopes down-left, rotate negative */
 .bar.right {
-  transform: rotate(calc(var(--angle) * -1)) translateY(-15px) translateX(0);
+  transform: rotate(calc(var(--angle) * -1)) translateY(-15px) translateX(5px);
   transform-origin: 80% 50%;
 }
 
@@ -127,9 +104,10 @@
   position: absolute;
   left: 50%;
   transform: translateX(-50%);
-  width: 260px;
+  width: 100px;
   height: 28px;
   background: linear-gradient(180deg,#efefef,#dcdfe8);
+  border: 0.8px solid rgb(160, 181, 200);
   border-radius: 6px;
   box-shadow: inset 0 2px 6px rgba(0,0,0,0.06), 0 6px 18px rgba(0,0,0,0.08);
   display:flex;
@@ -141,13 +119,14 @@
 
 /* top platform lifts up as t grows */
 .platform.top {
-  top: calc(40% - ( (var(--gap-max) - var(--gap-min)) * var(--t) / 2 ) - 10px);
+  top: calc(40% - 25px - ( (var(--gap-max) - var(--gap-min)) * var(--t) / 2 ));
   transition: top var(--speed) ease;
 }
 
 /* bottom platform moves down as t grows */
 .platform.bottom {
-  top: calc(60% + ( (var(--gap-max) - var(--gap-min)) * var(--t) / 2 ) + 10px);
+  box-shadow: 0 -12px 5px #c8c8c8 inset;
+  top: calc(60% + ( (var(--gap-max) - var(--gap-min)) * var(--t) / 2 ));
   transition: top var(--speed) ease;
 }
 

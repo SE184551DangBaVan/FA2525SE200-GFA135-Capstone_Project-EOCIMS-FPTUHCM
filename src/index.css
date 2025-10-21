@@ -14,7 +14,7 @@
 
   --color-primary: #24a7cb;
   --color-secondary: #37a2c076;
-  --color-tertiary: #047d9e58;
+  --color-tertiary: #047d9e2d;
 
   --hue: 223;
   --bg: hsl(var(--hue),10%,10%);

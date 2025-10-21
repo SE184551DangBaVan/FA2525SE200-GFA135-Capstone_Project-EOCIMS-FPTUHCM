@@ -7,15 +7,6 @@
   justify-content: right;
 }
 
-.main-home-page .extended-joint-container {
-  position: fixed;
-  z-index: 100;
-  top: 20px;
-  left: 20px;
-  width: 200px;
-  height: 600px;
-}
-
 .main-home-page-content-container {
   position: relative;
   margin: 100px 40px 0 0;

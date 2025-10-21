@@ -12,7 +12,7 @@ export default function Navbar() {
               <div className="logo"><span className='logoInitials'>EOC</span><span>I</span><span>M</span><span>S</span></div>
               <ul className="nav-links">
                   <li><a href=""onClick={() => navigate('/')}>Introduction</a></li>
-                  <li><a href="">Demo</a></li>
+                  <li><a href="#demo">Demo</a></li>
                   <li><a href="">About</a></li>
               </ul>
               <button className="btn-primary" onClick={() => navigate('/admin/home')}>Get Started</button>

@@ -179,7 +179,7 @@ export default function Hero() {
           <div className="wire"></div>
         </div>
       </div>
-      <div className="tools-involved">
+      <div className="tools-involved" id='demo'>
         <ul className="rowsOfLogo">
           <li><GitHubIcon /> <span>GitHub</span></li>
           <li><img className='image-icon' src={ReactIcon} /> <span>ReactJS</span></li>
